@@ -19,8 +19,15 @@ Address = form.getvalue('address')
 Emailid = form.getvalue('emailid')
 
 
+
 query = "DELETE FROM sampletable WHERE id = %d"% (Student_id)
 cursor.execute(query)
+x = cursor.rowcount
+def display():
+    if(x !=0):
+        print("<h1>Successfully Delete Student Id %d .... </h1>" % (Student_id))
+    else:
+         print(("Already Deleted!! Student Id %d")%(Student_id))
 db.commit()
 db.close()
 
@@ -31,6 +38,6 @@ print ("<head>")
 print ("<title>Hello - Second CGI Program</title>")
 print ("</head>")
 print ("<body>")
-print ("<h1>Successfully Delete Student Id %d .... </h1>" % (Student_id))
+display()
 print ("</body>")
 print ("</html>")
