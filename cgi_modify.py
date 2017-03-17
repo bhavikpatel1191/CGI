@@ -13,13 +13,15 @@ cursor = db.cursor()
 
 form = cgi.FieldStorage()
 # Get data from fields
-name = form.getvalue('txtname')
-student_id = int(form.getvalue('txtstudentid'))
-address = form.getvalue('txtaddress')
-emailid = form.getvalue('txtemailid')
+Name = form.getvalue('name')
+Student_id = int(form.getvalue('studentid'))
+Address = form.getvalue('address')
+Emailid = form.getvalue('emailid')
 
 
-query = "UPDATE sampletable SET name,address,emailid = '%s','%s','%s'  WHERE id = '%s'"%(name,address,emailid)% (student_id)
+query = "UPDATE sampletable " \
+        "SET name='%s',address='%s',emailid='%s'" \
+        " WHERE id = %d" % (Name,Address,Emailid,Student_id)
 cursor.execute(query)
 db.commit()
 db.close()
@@ -31,6 +33,6 @@ print ("<head>")
 print ("<title>Hello - Second CGI Program</title>")
 print ("</head>")
 print ("<body>")
-print ("<h1>Student Id %d deleted from database </h1>" % (student_id))
+print ("<h1>Successfully Modify Student Id %d .... </h1>" % (Student_id))
 print ("</body>")
 print ("</html>")

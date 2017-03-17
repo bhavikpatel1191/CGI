@@ -19,7 +19,7 @@ Address = form.getvalue('address')
 Emailid = form.getvalue('emailid')
 
 
-query = "DELETE FROM sampletable WHERE id = %d"% (Student_id)
+query = "INSERT INTO sampletable(id,name,address,emailid) VALUES('%d',' %s','%s', '%s')"%(Student_id,Name,Address,Emailid)
 cursor.execute(query)
 db.commit()
 db.close()
@@ -31,6 +31,6 @@ print ("<head>")
 print ("<title>Hello - Second CGI Program</title>")
 print ("</head>")
 print ("<body>")
-print ("<h1>Successfully Delete Student Id %d .... </h1>" % (Student_id))
-print ("</body>")
+print ("<h2>Successfully Registation...</h2>")
 print ("</html>")
+
